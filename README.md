@@ -46,7 +46,7 @@ Beispiele:
 ## Weiteres
 
 Rückgabe der einzelnen Koordinaten eines Vektors oder Punktes: `var.x()` / `var.y()` / `var.z()`
-Die Koordinaten können in einer `for-Schleife` iteriert werden: `for coordinate in var:`
+Die Koordinaten können in einer *for-Schleife* iteriert werden: `for coordinate in var:`
 
 Rückgabe einer Kopie eines Vektors oder Punktes: `var_new = var.copy()`
 Beispiel: `B = A.copy()`
@@ -55,3 +55,27 @@ Rückgabe der Dimensionen eines Vektors oder Punktes: `len(var)`
 
 Ausgabe des Vektors oder Punktes A in der Python-IDLE ` >>> A` oder als String `str(A)`: gibt zurück `Vector(1, 2, 3)` bzw. `Point(1, 2, 3)`
 
+
+## Beispiele
+
+```python
+from vectors import *
+
+# Define Point a and b
+a = Point(1,2,3)
+b = Point(4,5,6)
+
+# Define Vector c as difference of Point a and b
+c = Vector(b-a)
+
+# Define Vector d and e
+d = Vector(-14,5,9)
+e = c * 2
+
+# Test location relationships between the vectors
+print(f"Vector c is collinear to Vector e: {c == e}") #=> True
+print(f"Vector d is orthogonal to Vector c: {is_orthogonal(d,c)}; because dot product of d and c equals {dot(d,c)}") #=> True
+
+# Calculate area of a parallelogram spanned by Vector c and d
+print(f"Area between Vector c and d: {area(c,d)}")
+```
