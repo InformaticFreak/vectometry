@@ -1,5 +1,5 @@
 
-from math import sqrt, acos
+from math import sqrt, acos, degrees
 
 # Vector in R3
 class Vector:
@@ -18,7 +18,7 @@ class Vector:
 		elif len(args) == 2:
 			p1, p2 = args[0], args[1]
 			if type(p1) is Point and type(p2) is Point:
-				p = Vector(p2 - p1)
+				p = p2 - p1
 				x, y, z = p.x(), p.y(), p.z()
 		# Create from three single variables
 		elif len(args) == 3:
@@ -56,7 +56,7 @@ class Vector:
 	
 	# Data types
 	def __str__(self): return self.__repr__()
-	def __repr__(self): return f"Vector({self.x()}, {self.y()}, {self.z()})"
+	def __repr__(self): return f"{self.__class__.__name__}({self.x()}, {self.y()}, {self.z()})"
 	def __len__(self): return len(self.__point)
 	def __iter__(self): return iter(self.__point)
 	
@@ -135,7 +135,7 @@ class Point:
 	
 	# Data types
 	def __str__(self): return self.__repr__()
-	def __repr__(self): return f"Point({self.x()}, {self.y()}, {self.z()})"
+	def __repr__(self): return f"{self.__class__.__name__}({self.x()}, {self.y()}, {self.z()})"
 	def __len__(self): return len(self.__point)
 	def __iter__(self): return iter(self.__point)
 	
@@ -240,9 +240,15 @@ def spate(a, b, c):
 		raise TypeError("must be Vector")
 
 # Non-surplus angle between a and b
-def angle(a, b):
+def angle(a, b, mode="deg"):
 	if type(a) is Vector and type(b) is Vector:
-		return acos(dot(a, b) / (norm(a) * norm(b)))
+		rad_angle = acos(dot(a, b) / (norm(a) * norm(b)))
+		if mode == "deg":
+			return degrees(rad_angle)
+		elif mode == "rad":
+			return rad_angle
+		else:
+			raise ValueError("mode muste be 'deg' or 'rad'")
 	else:
 		raise TypeError("must be Vector")
 
