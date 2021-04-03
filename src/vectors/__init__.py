@@ -147,7 +147,7 @@ class Point:
 	def __neg__(self): return neg(self)
 	def __pos__(self): return self
 	
-	# Comparison operations as location relationships between vectors
+	# Comparison operations
 	def __eq__(self, a): return self.x() == a.x() and self.y() == a.y() and self.z() == a.z()
 	def __ne__(self, a): return not self.__eq__(a)
 	
