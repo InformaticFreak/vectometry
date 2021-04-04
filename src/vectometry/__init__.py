@@ -38,21 +38,21 @@ class Vector:
 				self.__point = (value, self.__point[1], self.__point[2])
 			return self.__point[0]
 		else:
-			TypeError("value must be int, float or None")
+			raise TypeError("value must be int, float or None")
 	def y(self, value=None):
 		if type(value) is int or type(value) is float or value is None:
 			if value is not None:
 				self.__point = (self.__point[0], value, self.__point[2])
 			return self.__point[1]
 		else:
-			TypeError("value must be int, float or None")
+			raise TypeError("value must be int, float or None")
 	def z(self, value=None):
 		if type(value) is int or type(value) is float or value is None:
 			if value is not None:
 				self.__point = (self.__point[0], self.__point[1], value)
 			return self.__point[2]
 		else:
-			TypeError("value must be int, float or None")
+			raise TypeError("value must be int, float or None")
 	
 	# Data types
 	def __str__(self): return self.__repr__()
@@ -117,21 +117,21 @@ class Point:
 				self.__point = (value, self.__point[1], self.__point[2])
 			return self.__point[0]
 		else:
-			TypeError("value must be int, float or None")
+			raise TypeError("value must be int, float or None")
 	def y(self, value=None):
 		if type(value) is int or type(value) is float or value is None:
 			if value is not None:
 				self.__point = (self.__point[0], value, self.__point[2])
 			return self.__point[1]
 		else:
-			TypeError("value must be int, float or None")
+			raise TypeError("value must be int, float or None")
 	def z(self, value=None):
 		if type(value) is int or type(value) is float or value is None:
 			if value is not None:
 				self.__point = (self.__point[0], self.__point[1], value)
 			return self.__point[2]
 		else:
-			TypeError("value must be int, float or None")
+			raise TypeError("value must be int, float or None")
 	
 	# Data types
 	def __str__(self): return self.__repr__()
