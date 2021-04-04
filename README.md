@@ -1,4 +1,4 @@
-# vector-operations
+# vector-geometry
 
 Das Python-Modul **vectors** implementiert ein Punkt-Objekt sowie ein Vektor-Objekt und die zugehörigen Vektoroperationen. Ziel war unter Anderem eine Benutzerfreundliche Implementierung, also die Integration in die Python typische Syntax mit Hilfe von sogenannten *Magical Functions* und dem *Operator Overloading*. So kann zum Beispiel der Betrag des Vektors A durch `vectors.norm(A)` berechnet werden, aber auch durch die Built-In Funktion `abs(A)`. Für die Berechnung des Skalarprodukts von Vektor A und Vektor B kann die Funktion `vectors.dot(A,B)` verwendet werden, aber auch der (`*`)-Operator: `A*B`.
 
