@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 DESCRIPTION = "Simple use of common vector and point operations in 3-dimensional space."
 LONG_DESCRIPTION = "Defines Vector and Point object with common vector operations as functions and with integration of built-in operators for better usability."
 
