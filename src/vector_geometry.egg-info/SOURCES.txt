@@ -1,0 +1,7 @@
+README.md
+setup.py
+src/vector_geometry.egg-info/PKG-INFO
+src/vector_geometry.egg-info/SOURCES.txt
+src/vector_geometry.egg-info/dependency_links.txt
+src/vector_geometry.egg-info/top_level.txt
+src/vectors/__init__.py

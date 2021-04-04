@@ -7,13 +7,13 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = "0.0.1"
+VERSION = "1.0.1"
 DESCRIPTION = "Simple use of vectors and points with vector operations"
 LONG_DESCRIPTION = "Defines a vector and point object with vector operations as functions and with integration of built-in operators for better usability."
 
 # Setting up
 setup(
-    name="vector-operations",
+    name="vector-geometry",
     version=VERSION,
     author="InformaticFreak",
     author_email="<yt.informaticfreak@gmail.com>",
