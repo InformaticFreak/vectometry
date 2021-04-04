@@ -25,10 +25,10 @@ p = Point((1, 2, 3))
 # Two points: Vector from p1 to p2
 p1 = Point(4, 5, 6)
 p2 = Point(7, 8, 9)
-v = Vector(p1, p2)
+v = Vector(p1, p2) #=> Vector(3, 3, 3)
 
 # Direct from the difference of two points: Vector from p1 to p2
-v = p2 - p1
+v = p2 - p1 #=> Vector(3, 3, 3)
 ```
 
 ### Compare position relationships of vectors
