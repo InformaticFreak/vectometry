@@ -1,20 +1,24 @@
 Metadata-Version: 2.1
 Name: vectometry
-Version: 0.0.2
-Summary: Simple use of common vector and point operations in 3-dimensional space.
+Version: 0.0.4
+Summary: A Python3 library for simple use of common vector and point operations in 3-dimensional space.
 Home-page: https://github.com/InformaticFreak/vectometry
 Author: InformaticFreak
-Author-email: <yt.informaticfreak@gmail.com>
-License: UNKNOWN
+License: MIT
+Project-URL: Documentation, https://github.com/InformaticFreak/vectometry#documentation
+Project-URL: Source, https://github.com/InformaticFreak/vectometry/blob/main/src/vectometry/__init__.py
 Project-URL: Bug Tracker, https://github.com/InformaticFreak/vectometry/issues
-Description: Defines Vector and Point object with common vector operations as functions and with integration of built-in operators for better usability.
-Keywords: python,vector,point,geometry,analytic geometry,vector operations,vector geometry,vectometry,vectors
+Description: # Documentation
+        A Python3 library for simple use of common vector and point operations in 3-dimensional space.
+        
+        Documentation for __**vectometry**__ on [GitHub.com](https://github.com/InformaticFreak/vectometry#documentation)
+Keywords: python,vector,point,geometry,analytic,vector-math,vectors-calculations,vectorspace,vectometry,vectors
 Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Topic :: Utilities
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Intended Audience :: Developers
 Classifier: Programming Language :: Python :: 3
-Classifier: Operating System :: Unix
-Classifier: Operating System :: MacOS :: MacOS X
-Classifier: Operating System :: Microsoft :: Windows
-Requires-Python: >=3.6
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3
 Description-Content-Type: text/markdown

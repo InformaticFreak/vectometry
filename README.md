@@ -1,5 +1,4 @@
 # vectometry
-
 ![GitHub](https://img.shields.io/github/license/informaticfreak/vectometry)&nbsp;&nbsp;&nbsp;&nbsp;
 ![PyPI](https://img.shields.io/pypi/v/vectometry)&nbsp;&nbsp;&nbsp;&nbsp;
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/vectometry)&nbsp;&nbsp;&nbsp;&nbsp;
@@ -9,19 +8,14 @@ The Python package _**vectometry**_ implements a Point object as well as a Vecto
 Developed by InformaticFreak (c) 2021
 
 ## Installation
-
-```batch
+```
 pip install vectometry
 ```
-
-[vectometry on PyPi.org](https://pypi.org/project/vectometry/)
-
 
 ## Documentation
 
 ### Creating Vector and Point
-
-```python
+```
 from vectometry import Vector, Point
 
 # A Vector or Point can be initialized by:
@@ -47,8 +41,7 @@ v = p2 - p1 #=> Vector(3, 3, 3)
 ```
 
 ### Compare position relationships of vectors
-
-```python
+```
 from vectometry import Vector
 from vectometry import is_orthogonal, is_collinear, is_complanar
 
@@ -72,8 +65,7 @@ is_complanar(v1, v2, v3) #=> True
 ```
 
 ### Calculation of common vector operations
-
-```python
+```
 from vectometry import Vector
 from vectometry import dot, cross, det, norm, angle, area, spate
 from vectometry import add, sub, mul, div, neg
@@ -158,8 +150,7 @@ neg(v) #=> Vector(-1, -2, -3)
 ```
 
 ### Miscellaneous
-
-```python
+```
 # Returns the coordinates of a point or vector
 p = Point(2, 1, 4)
 p.x(); p.y(); p.z() #=> 2 1 4
