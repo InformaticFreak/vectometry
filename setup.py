@@ -7,13 +7,13 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = "1.0.1"
-DESCRIPTION = "Simple use of vectors and points with vector operations"
-LONG_DESCRIPTION = "Defines a vector and point object with vector operations as functions and with integration of built-in operators for better usability."
+VERSION = "0.0.1"
+DESCRIPTION = "Simple use of common vector and point operations in 3-dimensional space."
+LONG_DESCRIPTION = "Defines Vector and Point object with common vector operations as functions and with integration of built-in operators for better usability."
 
 # Setting up
 setup(
-    name="vector-geometry",
+    name="vectometry",
     version=VERSION,
     author="InformaticFreak",
     author_email="<yt.informaticfreak@gmail.com>",
@@ -21,10 +21,10 @@ setup(
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
     install_requires=[],
-    keywords=["python", "vector", "point", "geometry", "analytic geometry", "vector operations", "vector geometry", "vectors"],
-	url="https://github.com/InformaticFreak/vector-geometry",
+    keywords=["python", "vector", "point", "geometry", "analytic geometry", "vector operations", "vector geometry", "vectometry", "vectors"],
+	url="https://github.com/InformaticFreak/vectometry",
 	project_urls={
-		"Bug Tracker": "https://github.com/InformaticFreak/vector-geometry/issues",
+		"Bug Tracker": "https://github.com/InformaticFreak/vectometry/issues",
 	},
     package_dir={"": "src"},
     packages=find_packages(where="src"),

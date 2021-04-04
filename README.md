@@ -1,81 +1,190 @@
-# vector-geometry
+# vectometry
 
-Das Python-Modul **vectors** implementiert ein Punkt-Objekt sowie ein Vektor-Objekt und die zugehörigen Vektoroperationen. Ziel war unter Anderem eine Benutzerfreundliche Implementierung, also die Integration in die Python typische Syntax mit Hilfe von sogenannten *Magical Functions* und dem *Operator Overloading*. So kann zum Beispiel der Betrag des Vektors A durch `vectors.norm(A)` berechnet werden, aber auch durch die Built-In Funktion `abs(A)`. Für die Berechnung des Skalarprodukts von Vektor A und Vektor B kann die Funktion `vectors.dot(A,B)` verwendet werden, aber auch der (`*`)-Operator: `A*B`.
+The Python package __**vectometry**__ implements a Point object as well as a Vector object and the common vector operations in 3-dimensional space. All functions can be used as the function itself, or via *Magical Functions* and *Operator Overloading*. That means, for example the magnitude of a vector A can be calculated by `vectometry.norm(A)`, but also by the Built-In function `abs(A)`. And for example the scalar product of vectors A and B can be calculated by `vectometry.dot(A,B)`, but also by the (`*`)-operator: `A*B`.
 
+## Examples of How To Use
 
-## Initialisierung
-
-Definition eines Vektors: `vec = vectors.Vector(*args)`
-Wobei `*args` den Punkt auf den der Orstvektor zeigt enthält. Dieser Punkt kann als Liste/Tupel mit drei Elementen übergeben werden; als einzelne Werte; als ein Point-Objekt oder als Differenz aus zwei Point-Objekten.
-Beispiele:
-* `vectors.Vector(1, 2, 3)`
-* `vectors.Vector((1, 2, 3))`
-* `vectors.Vector([1, 2, 3])`
-* `vectors.Vector(Point(1, 2, 3))`
-* `vectors.Vector(Point(4, 5, 6) - Point(1, 2, 3))`
-
-Definition eines Punktes: `pnt = vectors.Point(*args)`
-Hier entält `*args` die Koordinaten des Punktes als Liste/Tupel mit drei Elementen oder als einzelne Werte.
-Beispiele:
-* `vectors.Point(1, 2, 3)`
-* `vectors.Point((1, 2, 3))`
-* `vectors.Point([1, 2, 3])`
-
-
-## Funktionsumfang
-
-* Betrag von Vektor A: `vectors.norm(A)` / `abs(A)`
-* Negativ von Vektor A: `vectors.neg(A)` / `-A`
-* Addition von Vektor A und Vektor B: `vectors.add(A,B)` / `A+B`
-* Subtraktion von Vektor A und Vektor B: `vectors.sub(A,B)` / `A-B`
-* Multiplikation von Vektor A mit Int/Float B (Vielfaches): `vectors.mul(A,B)` / `A*B`
-* Division von Vektor A durch Int/Float B: `vectors.div(A,B)` / `A/B`
-* Kreuzprodukt aus Vektor A und Vektor B: `vectors.cross(A,B)` / `A%B`
-* Skalarprodukt aus Vektor A und Vektor B: `vectors.dot(A,B)` / `A*B`
-* Determinante von Vektor A, Vektor B und Vektor C: `vectors.det(A,B,C)`
-* Spatvolumen des von Vektor A, Vektor B und Vektor C aufgespannten Spats: `vectors.spate(A,B,C)`
-* Winkel zwischen Vektor A und Vektor B (Bogenmaß): `vectors.angle(A,B)`
-* Flächeninhalt des von Vektor A und Vektor B aufgespannten Parallelogramms: `vectors.area(A,B)`
-* Test auf komplanarität von Vektor A, Vektor B und Vektor C: `vectors.is_complanar(A,B,C)`
-* Test auf kollinerarität von Vektor A und Vektor B: `vectors.is_collinear(A,B)` / `A==B`
-* Test auf orthogonalität von Vektor A und Vektor B: `vectors.is_orthogonal`
-
-* Differenz aus zwei Punkten A und B: `vectors.sub(B,A)` / `B-A` gibt Differenzvektor zurück `vectors.Vector(B-A)`
-
-
-## Weiteres
-
-Rückgabe der einzelnen Koordinaten eines Vektors oder Punktes: `var.x()` / `var.y()` / `var.z()`
-Die Koordinaten können in einer *for-Schleife* iteriert werden: `for coordinate in var:`
-
-Rückgabe einer Kopie eines Vektors oder Punktes: `var_new = var.copy()`
-Beispiel: `B = A.copy()`
-
-Rückgabe der Dimensionen eines Vektors oder Punktes: `len(var)`
-
-Ausgabe des Vektors oder Punktes A in der Python-IDLE ` >>> A` oder als String `str(A)`: gibt zurück `Vector(1, 2, 3)` bzw. `Point(1, 2, 3)`
-
-
-## Beispiele
+### Creating Vector and Point
 
 ```python
-from vectors import *
+from vectometry import Vector, Point
 
-# Define Point a and b
-a = Point(1,2,3)
-b = Point(4,5,6)
+# A Vector or Point can be initialized by:
+# Three single int/float values
+v = Vector(1, 2, 3)
+p = Point(1, 2, 3)
 
-# Define Vector c as difference of Point a and b, means c = b - a
-c = Vector(a,b)
+# A list/tuple with three int/float values
+v = Vector([1, 2, 3])
+v = Vector((1, 2, 3))
 
-# Define Vector d and e
-d = Vector(-14,5,9)
-e = c * 2
+p = Point([1, 2, 3])
+p = Point((1, 2, 3))
 
-# Test location relationships between the vectors
-print(f"Vector c is collinear to Vector e: {c == e}") #=> True
-print(f"Vector d is orthogonal to Vector c: {is_orthogonal(d,c)}; because dot product of d and c equals {dot(d,c)}") #=> True
+# A vector is also created by
+# Two points: Vector from p1 to p2
+p1 = Point(4, 5, 6)
+p2 = Point(7, 8, 9)
+v = Vector(p1, p2)
 
-# Calculate area of a parallelogram spanned by Vector c and d
-print(f"Area between Vector c and d: {round(area(c,d),4)}") #=> 90.2995
+# Direct from the difference of two points: Vector from p1 to p2
+v = p2 - p1
+```
+
+### Compare position relationships of vectors
+
+```python
+from vectometry import Vector
+from vectometry import is_orthogonal, is_collinear, is_complanar
+
+# is_orthogonal(v1, v2) returns true, if vector v1 is perpendicular to vector v2
+v1 = Vector(0, 0, 1)
+v2 = Vector(0, 1, 0)
+is_orthogonal(v1, v2) #=> True
+
+# is_collinear(v1, v2) returns true, if vector v1 is collinear/paralell to vector v2
+v1 = Vector(0, 0, 1)
+v2 = Vector(0, 0, 5)
+is_collinear(v1, v2) #=> True
+# alternatives
+v1 == v2
+
+# is_complanar(v1, v2, v3) returns true, if vector v1, v2 and v3 are located in the same plane
+v1 = Vector(0, 0, 1)
+v2 = Vector(0, 0, 5)
+v3 = Vector(0, 0, -10)
+is_complanar(v1, v2, v3) #=> True
+```
+
+### Calculation of common vector operations
+
+```python
+from vectometry import Vector
+from vectometry import dot, cross, det, norm, angle, area, spate
+from vectometry import add, sub, mul, div, neg
+
+# Dot product
+v1 = Vector(1, 2, 3)
+v2 = Vector(4, -3, 6)
+dot(v1, v2) #=> 16
+# alternatives
+v1 * v2
+
+# Cross product
+v1 = Vector(1, 2, 3)
+v2 = Vector(4, -3, 6)
+cross(v1, v2) #=> Vector(-11, 21, 6)
+# alternatives
+v1 % v2
+
+# Determinant
+v1 = Vector(1, 2, 3)
+v2 = Vector(4, -3, 6)
+v3 = Vector(6, 1, -4)
+det(v1, v2, v3) #=> -69
+
+# Magnitude
+v = Vector(1, 2, 3)
+norm(v) #=> 3.7416573867739413
+# alternatives
+abs(v)
+
+# Angle in degree
+v1 = Vector(1, 2, 3)
+v2 = Vector(4, -3, 6)
+angle(v1, v2) #=> 56.80373134602263
+
+# Area of parallelogram spanned by 2 vectors v1 and v2
+v1 = Vector(1, 2, 3)
+v2 = Vector(4, -3, 6)
+area(v1, v2) #=> 24.454038521274967
+
+# Volume of spate/parallelepiped spanned by 3 vectors v1, v2 and v3
+v1 = Vector(1, 2, 3)
+v2 = Vector(4, -3, 6)
+v3 = Vector(6, 1, -4)
+spate(v1, v2, v3) #=> 69
+
+# Addition
+v1 = Vector(1, 2, 3)
+v2 = Vector(4, -3, 6)
+add(v1, v2) #=> Vector(5, -1, 9)
+# alternatives
+v1 + v2
+
+# Subtraction
+v1 = Vector(1, 2, 3)
+v2 = Vector(4, -3, 6)
+sub(v1, v2) #=> Vector(-3, 5, -3)
+# alternatives
+v1 - v2
+
+# Multiplication of vector by a real number
+v = Vector(1, 2, 3)
+n = 4
+mul(v, n) #=> Vector(4, 8, 12)
+# alternatives
+mul(n, v)
+v * n
+n * v
+
+# Division of vector by a real number
+v = Vector(1, 2, 3)
+n = 4
+div(v, n) #=> Vector(0.25, 0.5, 0.75)
+# alternatives
+v / n
+
+# Negative of vector
+v = Vector(1, 2, 3)
+neg(v) #=> Vector(-1, -2, -3)
+# alternatives
+-v
+```
+
+### Miscellaneous
+
+```python
+# Returns the coordinates of a point or vector
+p = Point(2, 1, 4)
+p.x(); p.y(); p.z() #=> 2 1 4
+
+v = Vector(4, 9, 1)
+v.x(); v.y(); v.z() #=> 4 9 10
+
+
+# Changes the coordinates of a point or vector to the given real number
+p = Point(2, 1, 4)
+p.x(-3); p.y(4); p.z(0)
+p #=> Point(-3, 4, 0)
+
+v = Vector(4, 9, 1)
+v.x(5); v.y(8); v.z(4)
+v #=> Vector(5, 8, 4)
+
+
+# All coordinates of a point or volume can be iterated
+p = Point(-3, 4, 0)
+[ c for c in p ] #=> [-3, 4, 0]
+
+v = Vector(5, 8, 4)
+[ c for c in v ] #=> [5, 8, 4]
+
+
+# Create a copy of a vector or point
+p = Point(-3, 4, 0)
+p1 = p.copy()
+p1 #=> Point(-3, 4, 0)
+
+v = Vector(5, 8, 4)
+v1 = v.copy()
+v1 #=> Vector(5, 8, 4)
+
+
+# Returns the dimensions of vector or point (always 3)
+p = Point(-3, 4, 0)
+len(p) #=> 3
+
+v = Vector(5, 8, 4)
+len(v) #=> 3
 ```
