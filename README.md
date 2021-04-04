@@ -152,7 +152,6 @@ p.x(); p.y(); p.z() #=> 2 1 4
 v = Vector(4, 9, 1)
 v.x(); v.y(); v.z() #=> 4 9 10
 
-
 # Changes the coordinates of a point or vector to the given real number
 p = Point(2, 1, 4)
 p.x(-3); p.y(4); p.z(0)
@@ -162,14 +161,12 @@ v = Vector(4, 9, 1)
 v.x(5); v.y(8); v.z(4)
 v #=> Vector(5, 8, 4)
 
-
 # All coordinates of a point or volume can be iterated
 p = Point(-3, 4, 0)
 [ c for c in p ] #=> [-3, 4, 0]
 
 v = Vector(5, 8, 4)
 [ c for c in v ] #=> [5, 8, 4]
-
 
 # Create a copy of a vector or point
 p = Point(-3, 4, 0)
@@ -179,7 +176,6 @@ p1 #=> Point(-3, 4, 0)
 v = Vector(5, 8, 4)
 v1 = v.copy()
 v1 #=> Vector(5, 8, 4)
-
 
 # Returns the dimensions of vector or point (always 3)
 p = Point(-3, 4, 0)
