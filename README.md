@@ -1,6 +1,5 @@
 # vectometry
 
-![PyPI - Downloads](https://img.shields.io/pypi/dm/vectometry)&nbsp;&nbsp;&nbsp;&nbsp;
 ![GitHub](https://img.shields.io/github/license/informaticfreak/vectometry)&nbsp;&nbsp;&nbsp;&nbsp;
 ![PyPI](https://img.shields.io/pypi/v/vectometry)&nbsp;&nbsp;&nbsp;&nbsp;
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/vectometry)&nbsp;&nbsp;&nbsp;&nbsp;
