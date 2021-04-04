@@ -15,7 +15,7 @@ pip install vectometry
 ## Documentation
 
 ### Creating Vector and Point
-```
+```Python
 from vectometry import Vector, Point
 
 # A Vector or Point can be initialized by:
@@ -41,7 +41,7 @@ v = p2 - p1 #=> Vector(3, 3, 3)
 ```
 
 ### Compare position relationships of vectors
-```
+```Python
 from vectometry import Vector
 from vectometry import is_orthogonal, is_collinear, is_complanar
 
@@ -65,7 +65,7 @@ is_complanar(v1, v2, v3) #=> True
 ```
 
 ### Calculation of common vector operations
-```
+```Python
 from vectometry import Vector
 from vectometry import dot, cross, det, norm, angle, area, spate
 from vectometry import add, sub, mul, div, neg
@@ -150,7 +150,7 @@ neg(v) #=> Vector(-1, -2, -3)
 ```
 
 ### Miscellaneous
-```
+```Python
 # Returns the coordinates of a point or vector
 p = Point(2, 1, 4)
 p.x(); p.y(); p.z() #=> 2 1 4
