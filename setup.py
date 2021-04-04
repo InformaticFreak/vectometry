@@ -22,9 +22,9 @@ setup(
     long_description=LONG_DESCRIPTION,
     install_requires=[],
     keywords=["python", "vector", "point", "geometry", "analytic geometry", "vector operations", "vector geometry", "vectors"],
-	url="https://github.com/InformaticFreak/vector-operations",
+	url="https://github.com/InformaticFreak/vector-geometry",
 	project_urls={
-		"Bug Tracker": "https://github.com/InformaticFreak/vector-operations/issues",
+		"Bug Tracker": "https://github.com/InformaticFreak/vector-geometry/issues",
 	},
     package_dir={"": "src"},
     packages=find_packages(where="src"),
