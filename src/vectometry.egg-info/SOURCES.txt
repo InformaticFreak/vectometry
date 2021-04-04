@@ -1,0 +1,7 @@
+README.md
+setup.py
+src/vectometry/__init__.py
+src/vectometry.egg-info/PKG-INFO
+src/vectometry.egg-info/SOURCES.txt
+src/vectometry.egg-info/dependency_links.txt
+src/vectometry.egg-info/top_level.txt

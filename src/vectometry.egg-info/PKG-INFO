@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: vectometry
+Version: 0.0.1
+Summary: Simple use of common vector and point operations in 3-dimensional space.
+Home-page: https://github.com/InformaticFreak/vectometry
+Author: InformaticFreak
+Author-email: <yt.informaticfreak@gmail.com>
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/InformaticFreak/vectometry/issues
+Description: Defines Vector and Point object with common vector operations as functions and with integration of built-in operators for better usability.
+Keywords: python,vector,point,geometry,analytic geometry,vector operations,vector geometry,vectometry,vectors
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
