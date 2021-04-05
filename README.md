@@ -1,7 +1,7 @@
 
 # vectometry
 
-![GitHub](https://img.shields.io/github/license/informaticfreak/vectometry)&nbsp;
+[![GitHub](https://img.shields.io/github/license/informaticfreak/vectometry)](LICENSE.txt)&nbsp;
 [![PyPI](https://img.shields.io/pypi/v/vectometry)](https://pypi.org/project/vectometry/)&nbsp;
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/vectometry)&nbsp;
 
