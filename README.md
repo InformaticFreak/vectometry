@@ -45,11 +45,7 @@ A Vector object can also be created by two Point objects, that means a Vector fr
 ```python
 v4 = Vector(p1, p2)
 v4 = p2 - p1
-```
-
-```python
->>> v4
-Vector(1, -6, 9)
+v4 #=> Vector(1, -6, 9)
 ```
 
 ### Compare position relationships of vectors
