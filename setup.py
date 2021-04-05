@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     README = "\n" + fh.read()
 
-VERSION = "0.0.4"
+VERSION = "0.0.5"
 DESCRIPTION = "A Python3 library for simple use of common vector and point operations in 3-dimensional space."
 LONG_DESCRIPTION = "# Documentation\n" + DESCRIPTION + "\n\nDocumentation for __**vectometry**__ on [GitHub.com](https://github.com/InformaticFreak/vectometry#documentation)"
 
@@ -25,7 +25,8 @@ setup(
 	project_urls={
 		"Documentation": "https://github.com/InformaticFreak/vectometry#documentation",
 		"Source": "https://github.com/InformaticFreak/vectometry/blob/main/src/vectometry/__init__.py",
-		"Bug Tracker": "https://github.com/InformaticFreak/vectometry/issues"
+		"Bug Tracker": "https://github.com/InformaticFreak/vectometry/issues",
+		"Change Log": ""
 	},
     package_dir={"": "src"},
     packages=find_packages(where="src"),
