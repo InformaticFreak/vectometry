@@ -279,6 +279,7 @@ The amount of dimensions of a Point object or Vector object in 3-dimensional spa
 
 ```python
 len(p) #=> 3
+len(v) #=> 3
 ```
 
 #### Copies/Duplicates
