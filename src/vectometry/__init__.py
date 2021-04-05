@@ -1,292 +1,314 @@
 
 from math import sqrt, acos, degrees
 
-# Vector in R3
-class Vector:
-	def __init__(self, *args):
-		# Vector to a point (location vector)
-		x, y, z = None, None, None
-		# Create from single Point or list/tuple
-		if len(args) == 1:
-			p = args[0]
-			if type(p) is Point:
-				x, y, z = p.x(), p.y(), p.z()
-			elif type(p) is list or type(p) is tuple:
-				if len(p) == 3:
-					x, y, z = p
-		# Create from two Points (difference of p1 and p2: p2 - p1)
-		elif len(args) == 2:
-			p1, p2 = args[0], args[1]
-			if type(p1) is Point and type(p2) is Point:
-				p = p2 - p1
-				x, y, z = p.x(), p.y(), p.z()
-		# Create from three single variables
-		elif len(args) == 3:
-			x, y, z = args[0], args[1], args[2]
-		# Check data type
-		if x is None or y is None or z is None:
-			raise TypeError("needs single Point or list/tuple with three dimensions; two Points; or three single variables")
-		elif ( type(x) is float or type(x) is int ) and ( type(y) is float or type(y) is int ) and ( type(z) is float or type(z) is int ):
-			self.__point = (x, y, z)
-		else:
-			raise TypeError("coordinate values must be float or int")
-		
-	# Return individual coordinate values if value is None, else set on value
-	def x(self, value=None):
-		if type(value) is int or type(value) is float or value is None:
-			if value is not None:
-				self.__point = (value, self.__point[1], self.__point[2])
-			return self.__point[0]
-		else:
-			raise TypeError("value must be int, float or None")
-	def y(self, value=None):
-		if type(value) is int or type(value) is float or value is None:
-			if value is not None:
-				self.__point = (self.__point[0], value, self.__point[2])
-			return self.__point[1]
-		else:
-			raise TypeError("value must be int, float or None")
-	def z(self, value=None):
-		if type(value) is int or type(value) is float or value is None:
-			if value is not None:
-				self.__point = (self.__point[0], self.__point[1], value)
-			return self.__point[2]
-		else:
-			raise TypeError("value must be int, float or None")
-	
-	# Data types
-	def __str__(self): return self.__repr__()
-	def __repr__(self): return f"{self.__class__.__name__}({self.x()}, {self.y()}, {self.z()})"
-	def __len__(self): return len(self.__point)
-	def __iter__(self): return iter(self.__point)
-	
-	# Arithmetic operations
-	def __add__(self, a): return add(self, a)
-	def __sub__(self, a): return sub(self, a)
-	def __mod__(self, a): return cross(self, a)
-	def __truediv__(self, a): return div(self, a)
-	def __pow__(self, a): return pow(self, a)
-	def __rmul__(self, a): return self.__mul__(a)
-	def __mul__(self, a):
-		if type(a) is int or type(a) is float:
-			return mul(self, a)
-		elif type(a) is Vector:
-			return dot(self, a)
-		else:
-			raise TypeError("must be int, float or Vector")
-	
-	# Unary oprations
-	def __neg__(self): return neg(self)
-	def __pos__(self): return self
-	def __abs__(self): return norm(self)
-	
-	# Comparison operations as location relationships between vectometry
-	def __eq__(self, a): return is_collinear(self, a)
-	def __ne__(self, a): return not self.__eq__(a)
-	
-	# Return a copy
-	def copy(self): return Vector(self.x(), self.y(), self.z())
 
-
-# Point in R3
 class Point:
+	"""Point object represents a point in 3-dimensional space, means x, y and z coordinates
+	
+	Accepts initialization formats:
+	 - List/tuple with three real numbers
+	 - Three single real numbers
+	"""
 	def __init__(self, *args):
-		# Single Point
 		x, y, z = None, None, None
-		# Create from list/tuple
 		if len(args) == 1:
 			p = args[0]
 			if type(p) is list or type(p) is tuple:
 				if len(p) == 3:
 					x, y, z = p
-		# Create from three single variables
 		elif len(args) == 3:
 			x, y, z = args[0], args[1], args[2]
-		# Check data type
-		if x is None or y is None or z is None:
-			raise TypeError("needs list/tuple with three dimensions; or three single variables")
-		elif ( type(x) is float or type(x) is int ) and ( type(y) is float or type(y) is int ) and ( type(z) is float or type(z) is int ):
+		if ( type(x) is float or type(x) is int ) and ( type(y) is float or type(y) is int ) and ( type(z) is float or type(z) is int ):
 			self.__point = (x, y, z)
 		else:
-			raise TypeError("coordinate values must be float or int")
+			raise TypeError
 	
-	# Return individual coordinate values if value is None, else set on value
 	def x(self, value=None):
-		if type(value) is int or type(value) is float or value is None:
-			if value is not None:
+		"""Return x-coordinate value and set it to specific value, if it is given at first position"""
+		if value is not None:
+			if type(value) is int or type(value) is float:
 				self.__point = (value, self.__point[1], self.__point[2])
-			return self.__point[0]
-		else:
-			raise TypeError("value must be int, float or None")
+			else:
+				raise TypeError
+		return self.__point[0]
 	def y(self, value=None):
-		if type(value) is int or type(value) is float or value is None:
-			if value is not None:
+		"""Return y-coordinate value and set it to specific value, if it is given at first position"""
+		if value is not None:
+			if type(value) is int or type(value) is float:
 				self.__point = (self.__point[0], value, self.__point[2])
-			return self.__point[1]
-		else:
-			raise TypeError("value must be int, float or None")
+			else:
+				raise TypeError
+		return self.__point[1]
 	def z(self, value=None):
-		if type(value) is int or type(value) is float or value is None:
-			if value is not None:
+		"""Return z-coordinate value and set it to specific value, if it is given at first position"""
+		if value is not None:
+			if type(value) is int or type(value) is float:
 				self.__point = (self.__point[0], self.__point[1], value)
-			return self.__point[2]
+			else:
+				raise TypeError
+		return self.__point[2]
+	
+	def __str__(self):
+		"""Return a string representing the Point object"""
+		return self.__repr__()
+	def __repr__(self):
+		"""Return a string representing the Point object"""
+		return f"{self.__class__.__name__}({self.x()}, {self.y()}, {self.z()})"
+	def __len__(self):
+		"""Return the amount of dimensions (always three)"""
+		return len(self.__point)
+	def __iter__(self):
+		"""Return an iterable object including the coordinates"""
+		return iter(self.__point)
+	
+	def __add__(self, other):
+		"""Return a Vector object as the negated displacement of both Point objects"""
+		return add(self, other)
+	def __sub__(self, other):
+		"""Return a Vector object as the displacement of both Point objects"""
+		return sub(self, other)	
+	
+	def __neg__(self):
+		"""Return a Point object with negated coordinates"""
+		return neg(self)
+	def __pos__(self):
+		"""Return the Point object"""
+		return self
+	def __round__(self, n=None):
+		"""Return a Point object, but the coordinates are rounded to the given decimal digits, default is zero decimal digits"""
+		if n is None:
+			n = 0
+		return Point(
+			round(self.x(), n),
+			round(self.y(), n),
+			round(self.z(), n)
+		)
+	
+	def __eq__(self, other):
+		"""Return True if every coordinate of both Point objects are equal, else False"""
+		return self.x() == other.x() and self.y() == other.y() and self.z() == other.z()
+	def __ne__(self, other):
+		"""Return True if not every coordinate of both Point objects are equal, else False"""
+		return not self.__eq__(other)
+	
+	def copy(self):
+		"""Return an independent Point object as a copy of the original"""
+		return Point(self.x(), self.y(), self.z())
+
+
+class Vector:
+	"""Vector object represents a vector in 3-dimensional space, means x, y and z coordinates.
+	
+	Accepts initialization formats:
+	 - Point object (location vector)
+	 - List/tuple with three real numbers
+	 - Two Point objects (vector from first Point object to second Point object)
+	 - Three single real numbers
+	"""
+	def __init__(self, *args):
+		if len(args) == 1:
+			p = args[0]
+			if type(p) is Point:
+				self.__point = p.copy()
+			elif type(p) is list or type(p) is tuple:
+				self.__point = Point(p)
+			else:
+				raise TypeError
+		elif len(args) == 2:
+			p1, p2 = args[0], args[1]
+			if type(p1) is Point and type(p2) is Point:
+				p = p2 - p1
+				self.__point = p.point()
+			else:
+				raise TypeError
+		elif len(args) == 3:
+			self.__point = Point(args)
 		else:
-			raise TypeError("value must be int, float or None")
+			raise TypeError
 	
-	# Data types
-	def __str__(self): return self.__repr__()
-	def __repr__(self): return f"{self.__class__.__name__}({self.x()}, {self.y()}, {self.z()})"
-	def __len__(self): return len(self.__point)
-	def __iter__(self): return iter(self.__point)
+	def x(self, value=None):
+		"""Return x-coordinate value and set it to specific value, if it is given at first position"""
+		return self.__point.x(value)
+	def y(self, value=None):
+		"""Return y-coordinate value and set it to specific value, if it is given at first position"""
+		return self.__point.y(value)
+	def z(self, value=None):
+		"""Return z-coordinate value and set it to specific value, if it is given at first position"""
+		return self.__point.z(value)
 	
-	# Arithmetic operations
-	def __add__(self, a): return add(self, a)
-	def __sub__(self, a): return sub(self, a)	
+	def point(self):
+		"""Return the coordinates on which the vector pointing as an independent Point object"""
+		return self.__point.copy()
 	
-	# Unary oprations
-	def __neg__(self): return neg(self)
-	def __pos__(self): return self
+	def __str__(self):
+		"""Return a string representing the Point object"""
+		return self.__repr__()
+	def __repr__(self):
+		"""Return a string representing the Point object"""
+		return f"{self.__class__.__name__}({self.x()}, {self.y()}, {self.z()})"
+	def __len__(self):
+		"""Return the amount of dimensions (always three)"""
+		return len(self.__point)
+	def __iter__(self):
+		"""Return an iterable object including the coordinates"""
+		return iter(self.__point)
 	
-	# Comparison operations
-	def __eq__(self, a): return self.x() == a.x() and self.y() == a.y() and self.z() == a.z()
-	def __ne__(self, a): return not self.__eq__(a)
+	def __add__(self, other):
+		"""Return the addition of two Vector objects"""
+		return add(self, other)
+	def __sub__(self, other):
+		"""Return the difference of two Vector objects"""
+		return sub(self, other)
+	def __mod__(self, other):
+		"""Return the cross product of two Vector objects"""
+		return cross(self, other)
+	def __truediv__(self, other):
+		"""Return the multiplication of a Vector object by the reciprocal of the real number"""
+		return div(self, other)
+	def __rmul__(self, other):
+		"""Return the multiplication of a Vector object by a real number"""
+		return self.__mul__(other)
+	def __mul__(self, other):
+		"""Return the multiplication of a Vector object by a real number"""
+		if type(other) is int or type(other) is float: 
+			return mul(self, other)
+		elif type(other) is Vector:
+			return dot(self, other)
+		else:
+			raise TypeError
 	
-	# Return a copy
-	def copy(self): return Point(self.x(), self.y(), self.z())
+	def __neg__(self):
+		"""Return a Point object with negated coordinates"""
+		return neg(self)
+	def __pos__(self):
+		"""Return the Point object"""
+		return self
+	def __abs__(self):
+		"""Return the magnitude of the Vector object as a real number"""
+		return norm(self)
+	def __round__(self, n=None):
+		"""Return a Point object, but the coordinates are rounded to the given decimal digits, default is zero decimal digits"""
+		if n is None:
+			n = 0
+		return Point(
+			round(self.x(), n),
+			round(self.y(), n),
+			round(self.z(), n)
+		)
+	
+	def __eq__(self, other):
+		"""Return True if both points on which the vectors pointing are the same, else False"""
+		return self.point() == other.point()
+	def __ne__(self, other):
+		"""Return True if both points on which the vectors pointing are not the same, else False"""
+		return not self.__eq__(other)
+	
+	def copy(self):
+		"""Return an independent Point object as a copy of the original"""
+		return Vector(self.point())
 
-# Basic vector operations for R3
-# Norm
+
 def norm(a):
+	"""Return the magnitude of the Vector object as a real number"""
 	if type(a) is Vector:
-		return sqrt(a.x()**2 + a.y()**2 + a.z()**2)
+		return sqrt(sum([ p**2 for p in a ]))
 	else:
-		raise TypeError("must be Vector")
+		raise TypeError
 
-# Negative
 def neg(a):
+	"""Return the given object (Point/Vector) with negated coordinates"""
 	if type(a) is Vector:
-		return Vector(a.x()*(-1), a.y()*(-1), a.z()*(-1))
+		return Vector([ -p for p in a ])
 	elif type(a) is Point:
-		return Point(a.x()*(-1), a.y()*(-1), a.z()*(-1))
+		return Point([ -p for p in a ])
 	else:
-		raise TypeError("must be Vector or Point")
+		raise TypeError
 
-# Additon
 def add(a, b):
+	"""Cases:
+	
+	Two Vector objects: Return the addition of two Vector objects
+	Two Point objects: Return a Vector object as the negated displacement of both Point objects
+	"""
 	if ( type(a) is Vector and type(b) is Vector ) or ( type(a) is Point and type(b) is Point ):
-		return Vector(a.x()+b.x(), a.y()+b.y(), a.z()+b.z())
+		return Vector(
+			a.x()+b.x(),
+			a.y()+b.y(),
+			a.z()+b.z()
+		)
 	else:
-		raise TypeError("must be two vectometry or two Points")
-
-# Subtraction
+		raise TypeError
 def sub(a, b):
-	if ( type(a) is Vector and type(b) is Vector ) or ( type(a) is Point and type(b) is Point ):
-		return add(a, -b)
-	else:
-		raise TypeError("must be two vectometry or two Points")
+	"""Cases:
+	
+	Two Vector objects: Return the difference of two Vector objects
+	Two Point objects: Return a Vector object as the displacement of both Point objects
+	"""
+	return add(a, neg(b))
 
-# Multiplication
 def mul(a, b):
+	"""Return the multiplication of a Vector object by a real number"""
 	if ( type(a) is int or type(a) is float ) and type(b) is Vector:
 		a, b = b, a
 	elif ( type(b) is int or type(b) is float ) and type(a) is Vector:
 		pass
 	else:
-		raise TypeError("must be Vector and int or float")
-	return Vector(a.x()*b, a.y()*b, a.z()*b)
-
-# Division
+		raise TypeError
+	return Vector([ p*b for p in a ])
 def div(a, b):
-	if type(a) is Vector and ( type(b) is int or type(b) is float ):
-		return mul(a, 1/b)
-	else:
-		raise TypeError("must be Vector and int or float")
+	"""Return the multiplication of a Vector object by the reciprocal of the real number"""
+	return mul(a, 1/b)
 
-# Pow: a**2 = dot(a, a)
-def pow(a, b=2):
-	if type(a) is Vector and type(b) is int:
-		if b == 2:
-			return dot(a, a)
-		else:
-			raise ValueError("exponent must be two")
-	else:
-		raise TypeError("must be Vector and int")
-
-# Cross product
 def cross(a, b):
+	"""Return the cross product of two Vector objects as a Vector object"""
 	if type(a) is Vector and type(b) is Vector:
-		return Vector(a.x()*b.y() - b.x()*a.y(), a.y()*b.z() - b.y()*a.z(), a.z()*b.x() - b.z()*a.x())
+		return Vector(
+			a.y()*b.z() - b.y()*a.z(),
+			a.z()*b.x() - b.z()*a.x(),
+			a.x()*b.y() - b.x()*a.y()
+		)
 	else:
-		raise TypeError("must be Vector")
+		raise TypeError
 
-# Dot product
 def dot(a, b):
+	"""Return the dot product of two Vector objects as a real number"""
 	if type(a) is Vector and type(b) is Vector:
 		return a.x()*b.x() + a.y()*b.y() + a.z()*b.z()
 	else:
-		raise TypeError("must be Vector")
+		raise TypeError
 
-# Determinant or spate/parallelepiped volume
 def det(a, b, c):
-	if type(a) is Vector and type(b) is Vector and type(c) is Vector:
-		#a.x()*b.y()*c.z() + b.x()*c.y()*a.z() + c.x()*a.y()*b.z() - b.x()*a.y()*c.z() - a.x()*c.y()*b.z() - c.x()*b.y()*a.z()
-		return dot(cross(a, b), c)
-	else:
-		raise TypeError("must be Vector")
+	"""Return the determinant of three Vector objects as a real number"""
+	return dot(cross(a, b), c)
 def spate(a, b, c):
-	if type(a) is Vector and type(b) is Vector and type(c) is Vector:
-		return abs(det(a, b, c))
-	else:
-		raise TypeError("must be Vector")
+	"""Return the volume of a parallelepiped spanned by three Vector objects as a positive real number including zero"""
+	return abs(det(a, b, c))
 
-# Non-surplus angle between a and b
 def angle(a, b, mode="deg"):
-	if type(a) is Vector and type(b) is Vector:
-		rad_angle = acos(dot(a, b) / (norm(a) * norm(b)))
-		if mode == "deg":
-			return degrees(rad_angle)
-		elif mode == "rad":
-			return rad_angle
-		else:
-			raise ValueError("mode muste be 'deg' or 'rad'")
+	"""Return the smaller angle between two Vector objects as a real number
+	
+	Mode:
+	 - In degree with mode 'deg' (default mode)
+	 - In radian with mode 'rad'
+	"""
+	rad_angle = acos(dot(a, b) / (norm(a) * norm(b)))
+	if mode == "deg":
+		return degrees(rad_angle)
+	elif mode == "rad":
+		return rad_angle
 	else:
-		raise TypeError("must be Vector")
+		raise ValueError
 
-# Area of a parallelogram spanned by two vectometry
 def area(a, b):
-	if type(a) is Vector and type(b) is Vector:
-		return norm(cross(a, b))
-	else:
-		raise TypeError("must be Vector")
+	"""Return the area of a parallelogram spanned by two Vector objects as a position real number including zero"""
+	return norm(cross(a, b))
 
-
-# Location relationships of vectometry
-# is_complanar
 def is_complanar(a, b, c):
-	if type(a) is Vector and type(b) is Vector and type(c) is Vector:
-		if spate(a, b, c) == 0:
-			return True
-		else:
-			return False
-	else:
-		raise TypeError("must be Vector")
-
-# is_collinear
+	"""Return True if all three Vector objects are in the same plane, else False"""
+	return spate(a, b, c) == 0
 def is_collinear(a, b):
-	if type(a) is Vector and type(b) is Vector:
-		if abs(dot(a, b)) == norm(a) * norm(b):
-			return True
-		else:
-			return False
-	else:
-		raise TypeError("must be Vector")
-
-# is_orthogonal
+	"""Return True if both Vector objects are parallel or anti-parallel to each other, else False"""
+	return abs(dot(a, b)) == norm(a) * norm(b)
 def is_orthogonal(a, b):
-	if type(a) is Vector and type(b) is Vector:
-		if dot(a, b) == 0:
-			return True
-		else:
-			return False
-	else:
-		raise TypeError("must be Vector")
+	"""Return True if both Vector objects are perpendicular to each other, else False"""
+	return dot(a, b) == 0
