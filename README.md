@@ -54,17 +54,23 @@ Vector(1, -6, 9)
 
 ### Compare position relationships of vectors
 
+#### Perpendicular (orthogonal)
+
 Two vectors can be perpendicular (orthogonal) to each other, which means that the smaller angle between the two vector is 90 degrees.
 
 ```python
 is_orthogonal(v1, v2) #=> False
 ```
 
+#### Collinear (parallel/anti-parallel)
+
 Two vectors are collinear, if they are parallel or anti-parallel to each other.
 
 ```python
 is_collinear(v1, v2) #=> False
 ```
+
+#### Complanar
 
 Three vectors can be in the same plane, that means they are complanar.
 
