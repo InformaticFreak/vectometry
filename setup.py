@@ -1,42 +1,40 @@
 from setuptools import setup, find_packages
-import codecs
 import os
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
-    README = "\n" + fh.read()
+with open(os.path.join(here, "README.md")) as file:
+	README = "".join(file.readlines())
 
-VERSION = "0.0.5"
-DESCRIPTION = "A Python3 library for simple use of common vector and point operations in 3-dimensional space."
+VERSION = "0.0.6"
+DESCRIPTION = "A Python library for simple use of common vector and point operations in 3-dimensional space."
 LONG_DESCRIPTION = "# Documentation\n" + DESCRIPTION + "\n\nDocumentation for __**vectometry**__ on [GitHub.com](https://github.com/InformaticFreak/vectometry#documentation)"
 
-# Setting up
 setup(
     name="vectometry",
     version=VERSION,
     author="InformaticFreak",
 	license="MIT",
     description=DESCRIPTION,
-    long_description=LONG_DESCRIPTION,
+    long_description=README,
     long_description_content_type="text/markdown",
-    keywords=["python", "vector", "point", "geometry", "analytic", "vector-math", "vectors-calculations", "vectorspace", "vectometry", "vectors"],
+    keywords=["python", "vector", "point", "geometry", "analytic", "vector-math", "vectors-calculations", "vectorspace", "vectometry", "vectors", "2d", "3d"],
 	url="https://github.com/InformaticFreak/vectometry",
 	project_urls={
 		"Documentation": "https://github.com/InformaticFreak/vectometry#documentation",
 		"Source": "https://github.com/InformaticFreak/vectometry/blob/main/src/vectometry/__init__.py",
 		"Bug Tracker": "https://github.com/InformaticFreak/vectometry/issues",
-		"Change Log": ""
+		"Change Log": "https://github.com/InformaticFreak/vectometry/blob/main/CHANGELOG.md"
 	},
     package_dir={"": "src"},
     packages=find_packages(where="src"),
-    python_requires=">=3",
+    python_requires=">=3.6",
     classifiers=[
 		"Development Status :: 4 - Beta",
 		"Topic :: Utilities",
         "License :: OSI Approved :: MIT License",
         "Intended Audience :: Developers",
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python",
         "Operating System :: OS Independent"
     ]
 )

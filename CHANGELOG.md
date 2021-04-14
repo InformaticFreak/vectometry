@@ -1,6 +1,11 @@
 
 # CHANGE LOG
 
+## 0.0.6
+
+* Fixed wrongly specified required Python version; generally Python 3 was specified, but it must be at least version 3.6
+* Added initialization with only two coordinates for 2-dimensional vectors and points
+
 ## 0.0.5
 
 * Writing a complete help and readme

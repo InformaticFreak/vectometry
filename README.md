@@ -6,7 +6,7 @@
 [![PyPI - Package](https://img.shields.io/pypi/v/vectometry)](https://pypi.org/project/vectometry/)&nbsp;
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/vectometry)](https://pypi.org/project/vectometry/)&nbsp;
 
-The Python package _**vectometry**_ implements a Point object as well as a Vector object and the common vector operations in 3-dimensional space. All functions can be used as the function itself, or via *Magical Functions* and *Operator Overloading*. That means, for example the magnitude of a vector A can be calculated by `vectometry.norm(A)`, but also by the Built-In function `abs(A)`. And for example the scalar product of vectors A and B can be calculated by `vectometry.dot(A,B)`, but also by the (`*`)-operator: `A*B`.
+The Python package _**vectometry**_ implements a Point object as well as a Vector object and the common vector operations in 3-dimensional space as well as for 2-dimensions. All functions can be used as the function itself, or via *Magical Functions* and *Operator Overloading*. That means, for example the magnitude of a vector A can be calculated by `vectometry.norm(A)`, but also by the Built-In function `abs(A)`. And for example the scalar product of vectors A and B can be calculated by `vectometry.dot(A,B)`, but also by the (`*`)-operator: `A*B`.
 
 Developed by InformaticFreak (c) 2021
 
@@ -47,6 +47,16 @@ A Vector object can also be created by two Point objects, that means a Vector fr
 v4 = Vector(p1, p2)
 v4 = p2 - p1
 v4 #=> Vector(1, -6, 9)
+```
+
+A point or vector for only 2-dimensions can also be created by the same Point object or Vector object, for this only two coordinates must be passed by a list/tuple or as singe	values. The remaining third coordinate will be set to zero.
+
+```python
+p2D = Point([5, 6])
+p2D #=> Point(5, 6, 0)
+
+v2D = Vector(1, 2)
+v2D #=> Vector(1, 2, 0)
 ```
 
 ### Compare position relationships of vectors
