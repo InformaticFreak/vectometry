@@ -6,8 +6,8 @@ class Point:
 	"""Point object represents a point in 3-dimensional space, means x, y and z coordinates
 	
 	Accepts initialization formats:
-	 - List/tuple with three real numbers
-	 - Three single real numbers
+	 - List/tuple with three/two real numbers
+	 - Three/Two single real numbers
 	"""
 	def __init__(self, *args):
 		x, y, z = None, None, None
@@ -16,6 +16,11 @@ class Point:
 			if type(p) is list or type(p) is tuple:
 				if len(p) == 3:
 					x, y, z = p
+				elif len(p) == 2:
+					x, y = p
+					z = 0
+		elif len(args) == 2:
+			x, y, z = args[0], args[1], 0
 		elif len(args) == 3:
 			x, y, z = args[0], args[1], args[2]
 		if ( type(x) is float or type(x) is int ) and ( type(y) is float or type(y) is int ) and ( type(z) is float or type(z) is int ):
@@ -74,10 +79,8 @@ class Point:
 	def __pos__(self):
 		"""Return the Point object"""
 		return self
-	def __round__(self, n=None):
+	def __round__(self, n=0):
 		"""Return a Point object, but the coordinates are rounded to the given decimal digits, default is zero decimal digits"""
-		if n is None:
-			n = 0
 		return Point(
 			round(self.x(), n),
 			round(self.y(), n),
@@ -101,9 +104,9 @@ class Vector:
 	
 	Accepts initialization formats:
 	 - Point object (location vector)
-	 - List/tuple with three real numbers
+	 - List/tuple with three/two real numbers
 	 - Two Point objects (vector from first Point object to second Point object)
-	 - Three single real numbers
+	 - Three/Two single real numbers
 	"""
 	def __init__(self, *args):
 		if len(args) == 1:
@@ -119,6 +122,8 @@ class Vector:
 			if type(p1) is Point and type(p2) is Point:
 				p = p2 - p1
 				self.__point = p.point()
+			elif ( type(p1) is int or type(p1) is float ) and ( type(p2) is int or type(p2) is float ):
+				self.__point = Point(p1, p2, 0)
 			else:
 				raise TypeError
 		elif len(args) == 3:
@@ -186,10 +191,8 @@ class Vector:
 	def __abs__(self):
 		"""Return the magnitude of the Vector object as a real number"""
 		return norm(self)
-	def __round__(self, n=None):
+	def __round__(self, n=0):
 		"""Return a Point object, but the coordinates are rounded to the given decimal digits, default is zero decimal digits"""
-		if n is None:
-			n = 0
 		return Point(
 			round(self.x(), n),
 			round(self.y(), n),
