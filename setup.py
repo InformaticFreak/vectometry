@@ -4,10 +4,11 @@ import os
 here = os.path.abspath(os.path.dirname(__file__))
 
 with open(os.path.join(here, "README.md")) as file:
-	README = "".join(file.readlines())
+	README = "".join([ line for line in file.readlines() if not line.startswith("[!") ])
+	print(README)
 
-VERSION = "0.0.6"
-DESCRIPTION = "A Python library for simple use of common vector and point operations in 3-dimensional space."
+VERSION = "0.0.7"
+DESCRIPTION = "A Python library for simple use of common vector and point operations in 3-dimensional space as well as for 2-dimensions."
 LONG_DESCRIPTION = "# Documentation\n" + DESCRIPTION + "\n\nDocumentation for __**vectometry**__ on [GitHub.com](https://github.com/InformaticFreak/vectometry#documentation)"
 
 setup(

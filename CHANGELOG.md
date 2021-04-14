@@ -1,9 +1,10 @@
 
 # CHANGE LOG
 
-## 0.0.6
+## 0.0.7
 
 * Fixed wrongly specified required Python version; generally Python 3 was specified, but it must be at least version 3.6
+* Fixed integration of the long description into the pypi.org page
 * Added initialization with only two coordinates for 2-dimensional vectors and points
 
 ## 0.0.5
