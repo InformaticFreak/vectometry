@@ -1,4 +1,10 @@
 
+"""
+A Python library for simple use of common vector and point operations in 3-dimensional space as well as for 2-dimensions.
+Copyright (c) 2021 InformaticFreak
+Version 2021.7
+"""
+
 from math import sqrt, acos, degrees
 
 
