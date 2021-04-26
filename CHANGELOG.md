@@ -1,6 +1,10 @@
 
 # CHANGE LOG
 
+## 2021.8
+
+* Version system changed
+
 ## 2021.7 (0.0.7)
 
 * Fixed wrongly specified required Python version; generally Python 3 was specified, but it must be at least version 3.6
