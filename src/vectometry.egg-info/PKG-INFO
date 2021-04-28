@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: vectometry
-Version: 0.0.7
-Summary: A Python library for simple use of common vector and point operations in 3-dimensional space as well as for 2-dimensions.
+Version: 2021.8
+Summary: A Python library for simple use of common point and vector operations in 3-dimensional space as well as for 2-dimensions.
 Home-page: https://github.com/InformaticFreak/vectometry
 Author: InformaticFreak
 License: MIT
@@ -175,6 +175,16 @@ Description:
         abs(v1)
         ```
         
+        #### Unit Vector
+        
+        It returns the unit vector of a Vector object, it means a vector with the same direction but a magnitude of one.
+        
+        ```python
+        v1u = unit(v1)
+        v1u #=> Vector(0.2672612419124244, 0.5345224838248488, -0.8017837257372732)
+        norm(v1u) #=> 1.0
+        ```
+        
         #### Dot/Scalar Product
         
         Both lines calculates the dot product of two Vector objects. The dot product returns a real number.
@@ -316,13 +326,15 @@ Description:
         v_dep #=> Vector(-8, 2, 3)
         ```
         
-Keywords: python,vector,point,geometry,analytic,vector-math,vectors-calculations,vectorspace,vectometry,vectors,2d,3d
+Keywords: python,vector,point,geometry,analytic,vector-math,vectors-calculations,vectorspace,vectometry,vectors,2d,3d,vector2d,vector3d
 Platform: UNKNOWN
 Classifier: Development Status :: 4 - Beta
-Classifier: Topic :: Utilities
-Classifier: License :: OSI Approved :: MIT License
 Classifier: Intended Audience :: Developers
-Classifier: Programming Language :: Python
+Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
-Requires-Python: >=3.6
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Requires-Python: >= 3.6
 Description-Content-Type: text/markdown

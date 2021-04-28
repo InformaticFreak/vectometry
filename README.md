@@ -1,7 +1,7 @@
 
 # vectometry
 
-[![GitHub License](https://img.shields.io/badge/license-MIT-green)](LICENSE.txt)&nbsp;
+[![GitHub License](https://img.shields.io/github/license/informaticfreak/vectometry)](LICENSE.txt)&nbsp;
 [![Python Version](https://img.shields.io/badge/python-3-blue)](https://www.python.org/downloads/)&nbsp;
 [![PyPI Version](https://img.shields.io/pypi/v/vectometry)](https://pypi.org/project/vectometry/)&nbsp;
 [![PyPI Downloads](https://img.shields.io/pypi/dm/vectometry)](https://pypistats.org/packages/vectometry)&nbsp;
@@ -166,6 +166,16 @@ The magnitude of a Vector object describes the length. It can be calculated from
 ```python
 norm(v1) #=> 3.7416573867739413
 abs(v1)
+```
+
+#### Unit Vector
+
+It returns the unit vector of a Vector object, it means a vector with the same direction but a magnitude of one.
+
+```python
+v1u = unit(v1)
+v1u #=> Vector(0.2672612419124244, 0.5345224838248488, -0.8017837257372732)
+norm(v1u) #=> 1.0
 ```
 
 #### Dot/Scalar Product

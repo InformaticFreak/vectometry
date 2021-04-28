@@ -4,6 +4,8 @@
 ## 2021.8
 
 * Version system changed
+* Fixed return of round function for Vector object
+* Added unit function to get the unit vector of a Vector object
 
 ## 2021.7 (0.0.7)
 

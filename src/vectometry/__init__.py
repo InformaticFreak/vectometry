@@ -2,7 +2,7 @@
 """
 A Python library for simple use of common vector and point operations in 3-dimensional space as well as for 2-dimensions.
 Copyright (c) 2021 InformaticFreak
-Version 2021.7
+Version 2021.8
 """
 
 from math import sqrt, acos, degrees
@@ -152,10 +152,10 @@ class Vector:
 		return self.__point.copy()
 	
 	def __str__(self):
-		"""Return a string representing the Point object"""
+		"""Return a string representing the Vector object"""
 		return self.__repr__()
 	def __repr__(self):
-		"""Return a string representing the Point object"""
+		"""Return a string representing the Vector object"""
 		return f"{self.__class__.__name__}({self.x()}, {self.y()}, {self.z()})"
 	def __len__(self):
 		"""Return the amount of dimensions (always three)"""
@@ -189,17 +189,17 @@ class Vector:
 			raise TypeError
 	
 	def __neg__(self):
-		"""Return a Point object with negated coordinates"""
+		"""Return a Vector object with negated coordinates"""
 		return neg(self)
 	def __pos__(self):
-		"""Return the Point object"""
+		"""Return the Vector object"""
 		return self
 	def __abs__(self):
 		"""Return the magnitude of the Vector object as a real number"""
 		return norm(self)
 	def __round__(self, n=0):
-		"""Return a Point object, but the coordinates are rounded to the given decimal digits, default is zero decimal digits"""
-		return Point(
+		"""Return a Vector object, but the coordinates are rounded to the given decimal digits, default is zero decimal digits"""
+		return Vector(
 			round(self.x(), n),
 			round(self.y(), n),
 			round(self.z(), n)
@@ -213,7 +213,7 @@ class Vector:
 		return not self.__eq__(other)
 	
 	def copy(self):
-		"""Return an independent Point object as a copy of the original"""
+		"""Return an independent Vector object as a copy of the original"""
 		return Vector(self.point())
 
 
@@ -221,6 +221,13 @@ def norm(a):
 	"""Return the magnitude of the Vector object as a real number"""
 	if type(a) is Vector:
 		return sqrt(sum([ p**2 for p in a ]))
+	else:
+		raise TypeError
+
+def unit(a):
+	"""Return the unit vector of the Vector object, it means a vector with the same direction but a magnitude of one"""
+	if type(a) is Vector:
+		return div(a, norm(a))
 	else:
 		raise TypeError
 
@@ -239,7 +246,7 @@ def add(a, b):
 	Two Vector objects: Return the addition of two Vector objects
 	Two Point objects: Return a Vector object as the negated displacement of both Point objects
 	"""
-	if ( type(a) is Vector and type(b) is Vector ) or ( type(a) is Point and type(b) is Point ):
+	if ( type(a) is type(b) is Vector ) or ( type(a) is type(b) is Point ):
 		return Vector(
 			a.x()+b.x(),
 			a.y()+b.y(),
