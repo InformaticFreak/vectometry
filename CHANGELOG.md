@@ -1,6 +1,11 @@
 
 # CHANGE LOG
 
+## Coming soon in 2021.9
+
+* Add a Plane object (means a layer)
+* Add function to calculate the distance between a point and a plane
+
 ## 2021.8
 
 * Version system changed
