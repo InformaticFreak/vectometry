@@ -18,12 +18,12 @@
 ## 0.0.7
 
 * Fixed wrongly specified required Python version; generally Python 3 was specified, but it must be at least version 3.6
-* Fixed integration of the long description into the pypi.org page
+* Fixed integration of the long description into the (pypi.org)[https://pypi.org/project/vectometry/] page
 * Added initialization with only two coordinates for 2-dimensional vectors and points
 
 ## 0.0.5
 
-* Writing a complete help and readme
+* Writing a complete help and (readme)[README.md]
 * Fixed problem where cross product gives wrong results
 * Rewrote some parts of the Vector/Point object and other functions
 * Redefined meaning of two same vector objects
