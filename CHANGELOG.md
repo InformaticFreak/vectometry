@@ -3,7 +3,7 @@
 
 ## Coming soon in 2021.9
 
-* Add a Plane object (means a layer) and a Line object (means a straight line)
+* Add a Plane object (means a layer)
 * Add function to calculate the distance between two vectometry objects, except Vector objects
 * Add function to calculate the intersection of two vectometry objects, except Vector objects
 * The coordinates to which a vector points should be returned as a reference to the Point object
