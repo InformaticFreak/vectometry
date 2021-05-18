@@ -5,6 +5,7 @@
 [![PyPI Downloads](https://img.shields.io/pypi/dm/vectometry)](https://pypistats.org/packages/vectometry)&nbsp;
 [![Python Version](https://img.shields.io/badge/python-3-blue)](https://www.python.org/downloads/)&nbsp;
 [![PyPI Version](https://img.shields.io/pypi/v/vectometry)](https://pypi.org/project/vectometry/)&nbsp;
+[![CodeFactor](https://www.codefactor.io/repository/github/informaticfreak/vectometry/badge)](https://www.codefactor.io/repository/github/informaticfreak/vectometry)&nbsp;
 
 The Python package _**vectometry**_ implements a Point object as well as a Vector object and the common vector operations in 3-dimensional space as well as for 2-dimensions. All functions can be used as the function itself, or via *Magical Functions* and *Operator Overloading*. That means, for example the magnitude of a vector A can be calculated by `vectometry.norm(A)`, but also by the Built-In function `abs(A)`. And for example the scalar product of vectors A and B can be calculated by `vectometry.dot(A,B)`, but also by the (`*`)-operator: `A*B`.
 
@@ -65,7 +66,7 @@ v2D #=> Vector(1, 2, 0)
 
 #### Perpendicular (orthogonal)
 
-Two vectors can be perpendicular (orthogonal) to each other, which means that the smaller angle between the two vector is 90 degrees.
+Two vectors can be perpendicular (orthogonal) to each other, which means that the smaller angle between the two vector is 90 Degrees.
 
 ```python
 is_orthogonal(v1, v2) #=> False
@@ -215,12 +216,12 @@ v1 % v2 * v3
 
 #### Angle
 
-The lines calculates the smaller angle between two Vector objects, the result returns a real number. At third position the mode can be specified between degree with `"deg"` and radian with `"rad"`. Degrees is optional and the default mode.
+The lines calculates the smaller angle between two Vector objects, the result returns a real number. At third position the mode can be specified between Degree with `"DEG"` and Radian with `"RAD"`. Degrees is optional and the default mode.
 
 ```python
 angle(v1, v2) #=> 148.997280866126
-angle(v1, v2, "deg")
-angle(v1, v2, "rad") #=> 2.6004931276326473
+angle(v1, v2, "DEG")
+angle(v1, v2, "RAD") #=> 2.6004931276326473
 ```
 
 #### Area of a parallelogram
@@ -260,7 +261,7 @@ v #=> Vector(5, 2, 3)
 
 #### Get Point of a Vector
 
-It returns the coordinates of the point on which the Vector object pointing as an independent Point object.
+It returns the coordinates to which the vector pointing as a reference to the Point object.
 
 ```python
 v = Vector(1, 2, 3)
