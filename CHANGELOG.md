@@ -3,7 +3,7 @@
 
 ## Coming soon in 2021.9
 
-* Add a Plane object (means a layer)
+* Add a Plane object (means a layer) and add a Line object (means a straight line)
 * Add function to calculate the distance between two vectometry objects, except Vector objects
 * Add function to calculate the intersection of two vectometry objects, except Vector objects
 * The coordinates to which a vector points should be returned as a reference to the Point object
@@ -32,7 +32,7 @@
 ## 0.0.4
 
 * Added a point object and integrated it into the vector object
-* Added mode for angle function; returns angle in degrees with `mode="deg"` (default) and in radians with `mode="rad"`
+* Added mode for angle function; returns angle in degrees with `mode="DEG"` (default) and in radians with `mode="RAD"`
 
 ## 0.0.2
 
