@@ -7,7 +7,7 @@
 [![PyPI Version](https://img.shields.io/pypi/v/vectometry)](https://pypi.org/project/vectometry/)&nbsp;
 [![CodeFactor](https://www.codefactor.io/repository/github/informaticfreak/vectometry/badge)](https://www.codefactor.io/repository/github/informaticfreak/vectometry)&nbsp;
 
-The Python package _**vectometry**_ implements a Point object as well as a Vector object and the common vector operations in 3-dimensional space as well as for 2-dimensions. All functions can be used as the function itself, or via *Magical Functions* and *Operator Overloading*. That means, for example the magnitude of a vector A can be calculated by `vectometry.norm(A)`, but also by the Built-In function `abs(A)`. And for example the scalar product of vectors A and B can be calculated by `vectometry.dot(A,B)`, but also by the (`*`)-operator: `A*B`.
+The Python package _**vectometry**_ implements a Point object as well as a Vector object and the common vector operations in 3-dimensional space as well as for 2-dimensions. All functions can be used as the function itself, or via *Magical Functions* and *Operator Overloading*. That means, for example the magnitude of a vector A can be calculated by `vectometry.norm(A)`, but also by the Built-In function `abs(A)`. And for example the scalar product of vectors A and B can be calculated by `vectometry.dot(A,B)`, but also by the `*`-operator: `A*B`.
 
 See the change log [here](CHANGELOG.md) and [send Feedback](https://forms.office.com/r/CbG2G1aCDf).
 
