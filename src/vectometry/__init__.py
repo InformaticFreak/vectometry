@@ -19,7 +19,7 @@ class Point:
 		x, y, z = None, None, None
 		if len(args) == 1:
 			p = args[0]
-			if isinstance(p, list) or isinstance(p, tuple):
+			if isinstance(p, (list, tuple)):
 				if len(p) == 3:
 					x, y, z = p
 				elif len(p) == 2:
@@ -29,7 +29,7 @@ class Point:
 			x, y, z = args[0], args[1], 0
 		elif len(args) == 3:
 			x, y, z = args[0], args[1], args[2]
-		if ( isinstance(x, float) or isinstance(x, int) ) and ( isinstance(y, float) or isinstance(y, int) ) and ( isinstance(z, float) or isinstance(z, int) ):
+		if isinstance(x, (int, float)) and isinstance(y, (int, float)) and isinstance(z, (int, float)):
 			self.__point = (x, y, z)
 		else:
 			raise TypeError
@@ -37,7 +37,7 @@ class Point:
 	def x(self, value=None):
 		"""Returns x-coordinate value and set it to specific value, if it is given"""
 		if value is not None:
-			if isinstance(value, int) or isinstance(value, float):
+			if isinstance(value, (int, float)):
 				self.__point = (value, self.__point[1], self.__point[2])
 			else:
 				raise TypeError
@@ -45,7 +45,7 @@ class Point:
 	def y(self, value=None):
 		"""Returns y-coordinate value and set it to specific value, if it is given"""
 		if value is not None:
-			if isinstance(value, int) or isinstance(value, float):
+			if isinstance(value, (int, float)):
 				self.__point = (self.__point[0], value, self.__point[2])
 			else:
 				raise TypeError
@@ -53,7 +53,7 @@ class Point:
 	def z(self, value=None):
 		"""Returns z-coordinate value and set it to specific value, if it is given"""
 		if value is not None:
-			if isinstance(value, int) or isinstance(value, float):
+			if isinstance(value, (int, float)):
 				self.__point = (self.__point[0], self.__point[1], value)
 			else:
 				raise TypeError
@@ -120,7 +120,7 @@ class Vector:
 			p = args[0]
 			if type(p) is Point:
 				self.__point = p.copy()
-			elif isinstance(p, list) or isinstance(p, tuple):
+			elif isinstance(p, (list, tuple)):
 				self.__point = Point(p)
 			else:
 				raise TypeError
@@ -129,7 +129,7 @@ class Vector:
 			if type(p1) is Point and type(p2) is Point:
 				p = sub(p2, p1)
 				self.__point = p.point()
-			elif ( isinstance(p1, int) or isinstance(p1, float) ) and ( isinstance(p2, int) or isinstance(p2, float) ):
+			elif isinstance(p1, (int, float)) and isinstance(p2, (int, float)):
 				self.__point = Point(p1, p2, 0)
 			else:
 				raise TypeError
@@ -258,7 +258,7 @@ class Line:
 	def D(self, value=None):
 		"""Returns the direction Vector D and set it to specific value, if it is given"""
 		if value is not None:
-			if isinstance(value, int) or isinstance(value, float):
+			if isinstance(value, (int, float)):
 				self.__D = value
 			else:
 				raise TypeError
@@ -330,7 +330,7 @@ class Plane:
 					raise TypeError
 				N = cross(D, S)
 			elif fmt == "C":
-				if type(kwargs.get("N")) is Vector and ( isinstance(kwargs.get("n0"), int) or isinstance(kwargs.get("n0"), float) ):
+				if type(kwargs.get("N")) is Vector and isinstance(kwargs.get("n0"), (int, float)):
 					N = kwargs["N"]
 					n0 = kwargs["n0"]
 					x, y, z = 0, 0, 0
@@ -473,15 +473,15 @@ def sub(a, b):
 
 def mul(a, b):
 	"""Returns the multiplication of a Vector object by a real number"""
-	if ( isinstance(a, int) or isinstance(a, float) ) and type(b) is Vector:
+	if isinstance(a, (int, float)) and type(b) is Vector:
 		return mul(b, a)
-	elif ( isinstance(b, int) or isinstance(b, float) ) and type(a) is Vector:
+	elif isinstance(b, (int, float)) and type(a) is Vector:
 		return Vector([ p*b for p in a ])
 	else:
 		raise TypeError
 def div(a, b):
 	"""Returns the multiplication of a Vector object by the reciprocal of the real number"""
-	if isinstance(b, int) or isinstance(b, float):
+	if isinstance(b, (int, float)):
 		return mul(a, 1/b)
 	else:
 		raise TypeError

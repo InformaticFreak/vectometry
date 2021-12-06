@@ -21,6 +21,16 @@ Developed by InformaticFreak (c) 2021
 pip install vectometry
 ```
 
+## Last unbuilt code changes
+
+- new Line object
+- new Plane object with lots of different initialization variants (parameter-, coordinate-, normal-equation)
+- minor typos
+- replace type test with isinstance for the types int, float, list and tuple
+- add distance and intersect function for all objects (far from finished, as an arithmetic solution is required)
+- add angle function for all objects
+- fix copy method of Vector object (now returns Vector not Point)
+
 ## Documentation
 
 ### Creating Vector and Point
