@@ -1,0 +1,47 @@
+name: Generate activity diagrams
+
+on:
+  push:
+    paths:
+    - '**.**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+      with: 
+        fetch-depth: 0
+    - name: Set up Python 3.6
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.6'
+    - name: Display Python version
+      run: python -c "import sys; print(sys.version)"
+    - name: Install dependencies
+      run: |
+           python -m pip install --upgrade pip
+           pip install matplotlib
+           pip install pandas
+    - name: Move python script to repository root
+      run: |
+           cp statistics/generateStatistic.py .
+    - name: Run python script
+      run: |
+           python generateStatistic.py
+           rm generateStatistic.py
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        mv *.png statistics/
+        git add ./statistics/*.png
+        git status
+        git commit -m "Add new statistics" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
