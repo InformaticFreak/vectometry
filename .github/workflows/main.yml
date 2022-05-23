@@ -37,8 +37,8 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        mv *.png statistics/
-        git add ./statistics/*.png
+        mv *.png .github/workflows/results/
+        git add .github/workflows/results/*.png
         git status
         git commit -m "Add new statistics" -a
     - name: Push changes
