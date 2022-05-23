@@ -3,7 +3,7 @@ name: Generate activity diagrams
 on:
   push:
     paths:
-    - '**.**'
+    - '**.*'
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
            pip install pandas
     - name: Move python script to repository root
       run: |
-           cp statistics/generateStatistic.py .
+           cp .github/worklflows/statistics.py .
     - name: Run python script
       run: |
            python generateStatistic.py
