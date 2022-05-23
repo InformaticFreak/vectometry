@@ -31,8 +31,8 @@ jobs:
            cp .github/workflows/statistics.py .
     - name: Run python script
       run: |
-           python generateStatistic.py
-           rm generateStatistic.py
+           python statistic.py
+           rm statistic.py
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
