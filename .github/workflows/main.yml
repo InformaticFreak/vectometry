@@ -3,7 +3,7 @@ name: Generate activity diagrams
 on:
   push:
     paths:
-    - '**.md'
+    - '**.**'
 
 jobs:
   build:
